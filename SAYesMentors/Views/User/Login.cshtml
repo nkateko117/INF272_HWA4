@@ -1,0 +1,31 @@
+﻿@model List<SAYesMentors.Models.Admin>
+@{
+    ViewBag.Title = "Login";
+}
+
+
+<div class="container">
+    <div class="row">
+        <h2>Login</h2>
+        @using (Html.BeginForm("Login", "User", FormMethod.Post))
+        { 
+            <form class="row g-3 needs-validation" novalidate>
+                <div class="col-md-12">
+                    <label for="primaryKey" class="form-label">Cellphone Number:</label>
+                    <input type="text" class="form-control" id="primaryKey" required>
+                </div>
+                <div class="col-md-12">
+                    <label for="loginKey" class="form-label">Cellphone Number:</label>
+                    <input type="text" class="form-control" id="loginKey" required>
+                </div>
+                <br />
+                <div class="col-md-12">
+                    <br />
+                    <button class="btn btn-primary" type="submit">Login</button>
+                </div>
+            </form>
+            }
+    </div>
+</div>
+
+

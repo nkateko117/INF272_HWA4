@@ -1,0 +1,79 @@
+﻿@model List<SAYesMentors.Models.Narative>
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="container">
+
+    <h2 style="padding-left:35%">SAYes Mentors</h2>
+
+    @foreach (var narrative in Model)
+    {
+    <table class="table-bordered" width="80%">
+        <thead>
+            <tr>
+                <th colspan="3" style="padding-left:35%">SAYes Mentoring QuickLick</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>Author: @narrative.MyName</th>
+                <th width="35%">Date: @narrative.Date</th>
+                <td width="35%">Version: @narrative.Version</td>
+            </tr>
+            <tr>
+                <th>Use case name: </th>
+                <td>@narrative.CaseName</td>
+                <th>USE CASE TYPE</th>
+            </tr>
+            <tr>
+                <th>Use case id:</th>
+                <td>@narrative.CaseID</td>
+                <td>Business Requirements:</td>
+            </tr>
+            <tr>
+                <th>Priority:</th>
+                <td>@narrative.Priority</td>
+                <td>System Analyses:</td>
+            </tr>
+            <tr>
+                <th>Source:</th>
+                <td>@narrative.Source</td>
+                <td>System Design:</td>
+            </tr>
+            <tr>
+                <th>Primary Business Actor:</th>
+                <td colspan="2">@narrative.PBA</td>
+            </tr>
+            <tr>
+                <th>Primary System Actor:</th>
+                <td colspan="2">@narrative.PSA</td>
+            </tr>
+            <tr>
+                <th>Other Participating Actors:</th>
+                <td colspan="2">@narrative.OPA</td>
+            </tr>
+            <tr>
+                <th>Other Interested Stakeholders:</th>
+                <td colspan="2">@narrative.OPS</td>
+            </tr>
+            <tr>
+                <th>Description:</th>
+                <td colspan="2">@narrative.Description</td>
+            </tr>
+            <tr>
+                <th>Pre-condition:</th>
+                <td colspan="2">@narrative.PreCon</td>
+            </tr>
+            <tr>
+                <th>Trigger:</th>
+                <td colspan="2">@narrative.Trigger</td>
+            </tr>
+        </tbody>
+    </table>
+    <br />
+    <br />
+    }
+    
+
+</div>
