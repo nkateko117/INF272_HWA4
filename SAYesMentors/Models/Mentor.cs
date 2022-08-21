@@ -5,8 +5,10 @@ using System.Web;
 
 namespace SAYesMentors.Models
 {
+    
     public class Mentor: User
     {
+        public string status { get; set; }
         public override int getAge(DateTime date)
         {
             DateTime now = DateTime.Now;

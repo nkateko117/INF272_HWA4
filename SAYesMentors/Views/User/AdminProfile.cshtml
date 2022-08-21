@@ -1,4 +1,4 @@
-﻿@model SAYesMentors.Models.User
+﻿@model List<SAYesMentors.Models.User>
    @{
     ViewBag.Title = "AdminProfile";
 }
@@ -7,7 +7,45 @@
 
 <div class="container">
     <div class="jumbotron">
-        <h4>@Model.FirstName @Model.LastName
-        </h4>
+        <h4>User:</h4>
+        <div style="height: 400px; overflow: auto;">
+            <div class="well-sm">
+                <table class="table table-condensed table-hover">
+                    <thead style="position: sticky;top: 0">
+                        <tr bgcolor="grey" class="auto-style">
+                            <th class="col-lg-4">Applicant: Name</th>
+                            <th class="col-lg-1">Age</th>
+                            <th class="t, col-lg-1">Gender</th>
+                            <th class="t, col-lg-2">Approve Application</th>
+                            <th class="t, col-lg-2">Reject Application</th>
+                            <th class="t, col-lg-2">Application Status</th>
+                        </tr>
+                    </thead>
+
+                @foreach(var person in Model)
+            {
+                <tr id="tRow">
+                    <td>@person.FirstName @person.LastName</td>
+                    <td>@person.Age</td>
+                    <td>@person.Gender</td>
+                    <td> <button id="apr" onclick="approveF">Approve</button></td>
+                    <td> <button id="rpr" onclick="rejectF">Reject</button></td>
+                    <td id="aStat">Pending </td>
+                </tr>
+            }
+                    </table>
+
+            </div>
+        </div>
     </div>
 </div>
+
+<script>
+    function approveF() {
+        $('aStat').text = "Approved"
+    }
+
+    function rejectF() {
+        $('tRow').remove();
+    }
+</script>

@@ -9,9 +9,9 @@ namespace SAYesMentors.Controllers
 {
     public class UserController : Controller
     {
-        User mentee = new Mentee();
-        User mentor = new Mentor();
-        public List<Admin> admin = new List<Admin>
+        public List<User> users = new List<User>();
+     
+        public List<User> admin = new List<User>
         {
             new Admin {FirstName="Nkateko", LastName="Maluleke", Gender="Male", Address="123 Hatfield Pretoria", Age=21, CellphoneNumber="0672472417",
                 EmailAddress="u19075716@tuks.co.za", UserType="Employee", Password="MMaluleke"},
@@ -19,19 +19,20 @@ namespace SAYesMentors.Controllers
                 EmailAddress="olimpiajohane@gmail.com", UserType="Employee", Password="OHlanjwa"},
         };
 
-        
 
         // GET: User
         public ActionResult Register()
         {
-            return View();
+           return View();
         }
         
         [HttpPost]
         public ActionResult Register(string validationCustom01, string validationCustom02, string validationCellphone, string genderValidation, string applicantType, string validationAddress, string validationEmail, DateTime DOB )
         {
+
             if (applicantType == "Mentee")
             {
+                Mentee mentee = new Mentee();
                 mentee.FirstName = validationCustom01;
                 mentee.LastName = validationCustom02;
                 mentee.CellphoneNumber = validationCellphone;
@@ -40,10 +41,13 @@ namespace SAYesMentors.Controllers
                 mentee.Address = validationAddress;
                 mentee.EmailAddress = validationEmail;
                 mentee.Age = mentee.getAge(DOB);
+
+                users.Add(mentee);
             }
 
             else if(applicantType == "Mentor")
             {
+                Mentor mentor = new Mentor();
                 mentor.FirstName = validationCustom01;
                 mentor.LastName = validationCustom02;
                 mentor.CellphoneNumber = validationCellphone;
@@ -51,10 +55,12 @@ namespace SAYesMentors.Controllers
                 mentor.UserType = applicantType;
                 mentor.Address = validationAddress;
                 mentor.EmailAddress = validationEmail;
-                mentor.Age = mentee.getAge(DOB);
+                mentor.Age = mentor.getAge(DOB);
+
+                users.Add(mentor);
             }
 
-            return View();
+            return RedirectToAction("AdminProfile");
         }
         
 
@@ -86,7 +92,7 @@ namespace SAYesMentors.Controllers
 
         public ActionResult AdminProfile()
         {
-            return View();
+            return View(admin);
         }
 
     }

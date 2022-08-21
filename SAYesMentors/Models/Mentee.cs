@@ -7,6 +7,7 @@ namespace SAYesMentors.Models
 {
     public class Mentee: User
     {
+        public string status { get; set; }
         public override int getAge(DateTime date)
         {
             DateTime now = DateTime.Now;
